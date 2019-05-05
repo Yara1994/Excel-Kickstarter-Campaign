@@ -1,32 +1,80 @@
-1.	Insight 1: This insight shows the relationship between the project category and its outcome to determine which category had the highest success rate. Top 3 Kickstarter are in Theater, music and film/video categories and lowest 3 performers are in food, games and publishing categories. Overall, kickstarters are likely to be successful than to fail and get canceled. This insight also tells that there are certain categories which did not perform well at all. Backers might have to rethink on supporting those categories.
- 
-![1](https://user-images.githubusercontent.com/44784856/56697038-7f6b8a00-66a2-11e9-9145-fda0c9b0298f.png)
+## Unit 1 | Assignment - KickStart My Chart
 
-2.	Insight 2: Second insights is on the relationship between the project sub-category and the outcome to analyze which subcategories were most likely to succeed. Looking into the sub-categories, we can see that some categories has performed great with 100% success rate and are most likely to succeed, they are Rock (Music), Documentary (Film & Video), and Hardware (Technology). Worst performers in sub-categories are animation, drama, jazz and video games. From previous insight as we know theater and music were most successful especially from play and rock sub-categories.
+## Background
 
- ![2](https://user-images.githubusercontent.com/44784856/56697063-93af8700-66a2-11e9-9be0-1975cd366936.png)
+Over two billion dollars have been raised using the massively successful crowdfunding service, Kickstarter, but not every project has found success. Of the over 300,000 projects aunched on Kickstarter, only a third have made it through the funding process with a positive outcome.
 
-3.	Insight 3: This insight shows relationship to analyze project based on the time of year (month) in which the project was conducted and the subsequent outcomes. There is a significant increase in successful projects in the month of May and least successful outcomes can be seen occurred in December.
+Since getting funded on Kickstarter requires meeting or exceeding the project's initial goal, many organizations spend months looking through past projects in an attempt to discover some trick to finding success. For this week's homework, you will organize and analyze a database of four thousand past projects in order to uncover any hidden trends.
 
- ![3](https://user-images.githubusercontent.com/44784856/56697106-b3df4600-66a2-11e9-946b-f9a89adc642e.png)
+## Instructions
 
-4.	Insight 4: This line chart is to analyze different outcomes based on the project's goals. It has been concluded that lower the range higher the success rate of the project. Goal range “Less Than 1000” has highest successful percentage with 71%.
+![Kickstarter Table](Images/FullTable.PNG)
 
-![4](https://user-images.githubusercontent.com/44784856/56697226-e9842f00-66a2-11e9-82a9-89e6a718f214.png)
+* Using the Excel table provided, you will be modifying and analyzing the data of four thousand past Kickstarter projects as you attempt to uncover some of the market trends.
 
-Limitations:
+* Use conditional formatting to fill each cell in the `state` column with a different color, depending on whether the associated campaign was "successful," "failed," "cancelled," or is currently "live".
 
-•	Of the over 300,000 projects launched, we only have data for 4,000 projects. This data is not enough to accurately represent the data of all Kickstarter campaigns and find insight.
+* Create a new column at column O called `percent funded` that uses a formula to uncover how much money a campaign made towards reaching its initial goal.
 
-•	Apart from mentioned factors, there can be other factors like geographical area and currency worth considering finding the insights.
+  * Use conditional formatting to fill each cell in the `percent funded` column using a three-color scale. The scale should start at 0 and be a dark shade of red, transitioning to green at 100, and then moving towards blue at 200.
 
-•	Additional analysis could have been conducted on duration of the campaign.
+* Create a new column at column P called `average donation` that uses a formula to uncover how much each backer for the project paid on average.
 
+* Create two new columns, one called `category` at Q and another called `sub-category` at R, which use formulas to split the `Category and Sub-Category` column into two parts.
 
-What are some other possible tables/graphs that we could create?
+  ![Category Stats](Images/CategoryStats.PNG)
 
-•	We could have created graph to analyze the success of projects based on the duration of the project.
+  * Create a new sheet with a pivot table that will analyze your initial worksheet to count how many campaigns were "successful," "failed," "cancelled," or are currently "live" per **category**.
 
-•	Analysis based on geographical area would have been contributed to make additional conclusions.
+    * Create a stacked column pivot chart that can be filtered by `country` based on the table you have created.
 
-•	Average donation could have given more insights.
+  ![Subcategory Stats](Images/SubcategoryStats.PNG)
+
+  * Create a new sheet with a pivot table that will analyze your initial sheet to count how many campaigns were "successful," "failed," "cancelled," or are currently "live" per **sub-category**.
+
+    * Create a stacked column pivot chart that can be filtered by `country` and `parent-category` based on the table you have created.
+
+* The dates stored within the `deadline` and `launched_at` columns are using unix timestamps. Fortunately for us, [there is a formula](http://spreadsheetpage.com/index.php/tip/converting_unix_timestamps/) out there that can be used to convert these timestamps into a normal date.
+
+  * Create a new column named `Date Created Conversion` that will use [this formula](http://spreadsheetpage.com/index.php/tip/converting_unix_timestamps/) to convert the data contained within `launched_at` into Excel's Date format
+
+  * Create a new column named `Date Ended Conversion` that will use [this formula](http://spreadsheetpage.com/index.php/tip/converting_unix_timestamps/) to convert the data contained within `deadline` into Excel's Date format
+
+  ![Outcomes Based on Launch Date](Images/LaunchDateOutcomes.PNG)
+
+  * Create a new sheet with a pivot table with a column of `state`, rows of `Date Created Conversion`, values based on the count of `state`, and filters based on `parent category` and `Years`.
+
+  * Now create a pivot chart line graph that visualizes this new table.
+  
+* Create a report in Microsoft Word and answer the following questions...
+
+ 1. What are three conclusions we can make about Kickstarter campaigns given the provided data?
+ 2. What are some of the limitations of this dataset?
+ 3. What are some other possible tables/graphs that we could create?
+
+## Bonus
+
+* Create a new sheet with 8 columns: `Goal`, `Number Successful`, `Number Failed`, `Number Canceled`, `Total Projects`, `Percentage Successful`, `Percentage Failed`, and `Percentage Canceled`
+
+  * In the `goal` column, create twelve rows with the following headers...
+
+    * Less Than 1000
+    * 1000 to 4999
+    * 5000 to 9999
+    * 10000 to 14999
+    * 15000 to 19999
+    * 20000 to 24999
+    * 25000 to 29999
+    * 30000 to 34999
+    * 35000 to 39999
+    * 40000 to 44999
+    * 45000 to 49999
+    * Greater than or equal to 50000
+
+    ![Goal Outcomes](Images/GoalOutcomes.PNG)
+
+  * Using the `COUNTIFS()` formula, count how many successful, failed, and canceled projects were created with goals within those ranges listed above. Populate the `Number Successful`, `Number Failed`, and `Number Canceled` columns with this data.
+
+  * Add up each of the values in the `Number Successful`, `Number Failed`, and `Number Canceled` columns to populate the `Total Projects` column. Then, using a mathematic formulae, find the percentage of projects which were successful, failed, or were canceled per goal range.
+
+  * Create a line chart which graphs the relationship between a goal's amount and its chances at success, failure, or cancellation.
